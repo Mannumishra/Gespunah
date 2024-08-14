@@ -9,7 +9,7 @@ const AllCategory = () => {
     const [data, setData] = useState([])
     const getApiData = async () => {
         try {
-            let res = await axios.get("http://localhost:8000/api/category")
+            let res = await axios.get("https://api.gespunah.com/api/category")
             const resData = res.data.data
             setData(resData.reverse())
         } catch (error) {
@@ -18,7 +18,7 @@ const AllCategory = () => {
     }
     const deleteRecord = async (_id) => {
         try {
-            let res = await axios.delete("http://localhost:8000/api/category/" + _id)
+            let res = await axios.delete("https://api.gespunah.com/api/category/" + _id)
             if (res.status === 200) {
                 toast.success("Category Deletd Succssfully")
             }

@@ -28,7 +28,7 @@ const EditProduct = () => {
 
     const getApiData = async () => {
         try {
-            let res = await axios.get("http://localhost:8000/api/category");
+            let res = await axios.get("https://api.gespunah.com/api/category");
             setCatedata(res.data.data);
         } catch (error) {
             console.error('Error fetching category data:', error);
@@ -38,7 +38,7 @@ const EditProduct = () => {
 
     const getCollectionData = async () => {
         try {
-            let res = await axios.get("http://localhost:8000/api/bestseller");
+            let res = await axios.get("https://api.gespunah.com/api/bestseller");
             setCollectiondata(res.data.data);
         } catch (error) {
             console.error('Error fetching collection data:', error);
@@ -48,7 +48,7 @@ const EditProduct = () => {
 
     const getProductData = async () => {
         try {
-            let res = await axios.get(`http://localhost:8000/api/product/${_id}`);
+            let res = await axios.get(`https://api.gespunah.com/api/product/${_id}`);
             setProductData(res.data.data);
         } catch (error) {
             console.error('Error fetching product data:', error);
@@ -132,7 +132,7 @@ const EditProduct = () => {
             productData.numberoffoot.forEach((number, index) => {
                 formData.append(`numberoffoot[${index}]`, number);
             });
-            const res = await axios.put(`http://localhost:8000/api/product/${_id}`, formData);
+            const res = await axios.put(`https://api.gespunah.com/api/product/${_id}`, formData);
             if (res.status === 200) {
                 toast.success('Product updated successfully');
                 navigate('/all-products');

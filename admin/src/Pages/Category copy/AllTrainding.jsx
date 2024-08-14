@@ -12,7 +12,7 @@ const AllTrainding = () => {
 
     const getApiData = async () => {
         try {
-            const res = await axios.get("http://localhost:8000/api/bestseller");
+            const res = await axios.get("https://api.gespunah.com/api/bestseller");
             const resData = res.data.data;
             setData(resData.reverse());
         } catch (error) {
@@ -22,7 +22,7 @@ const AllTrainding = () => {
 
     const deleteRecord = async (_id) => {
         try {
-            const res = await axios.delete(`http://localhost:8000/api/bestseller/` + _id);
+            const res = await axios.delete(`https://api.gespunah.com/api/bestseller/` + _id);
             if (res.status === 200) {
                 getApiData();
             }
