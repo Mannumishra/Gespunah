@@ -1,0 +1,47 @@
+.highquality{
+    display: flex;
+    gap: 100px;
+    padding: 50px 120px;
+}
+.hiquaimg{
+    width: 50%;
+}
+.hiquaimg img{
+    width: 100%;
+    height: auto;
+}
+.highquatext{
+    width: 50%;
+}
+.headinghighqua{
+    font-size: 50px;
+    font-style:'Roboto Slab', serif;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+.texthighquality{
+    font-size: 19px;
+    /* text-align: justify; */
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .highquality {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 17px;
+    }
+    .hiquaimg{
+        width: 100%;
+    }
+    .highquatext{
+        width: 100%;
+    }
+    .headinghighqua {
+        font-size: 26px;
+    }
+    .texthighquality {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,257 @@
+/* Custom CSS for SinglePage component */
+
+.container-fluid {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .productdetailsheight {
+    margin-top: 0px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .col-lg-6 {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .carousel {
+    position: relative;
+  }
+  
+  .carousel-inners {
+    display: flex;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Customize background or border if needed */
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    /* Example box shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+  
+  .carousel-item {
+    flex: 1;
+    display: none;
+  }
+  
+  .carousel-item.active {
+    display: block;
+  }
+  
+  .singlrpageimage {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: orange;
+  }
+  
+  .carousel-control-prev {
+    left: 0;
+  }
+  
+  .carousel-control-next {
+    right: 0;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .thumbnails {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    scrollbar-width: none;
+    margin-top: 10px;
+  }
+  
+  .singlrpageimageslide {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+  .singlrpageimageslide.active {
+    border-color: orange;
+  }
+  
+  .productsecondcol {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+  
+  .productname{
+    font-size: 30px;
+    text-transform: uppercase;
+    font-family:  "Tenor Sans";;
+    font-weight: 800;
+  }
+  .productdetails{
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .stars {
+    display: flex;
+    gap: 5px;
+  }
+  .starticons{
+    font-size: 20px;
+  }
+  .starnumber{
+    font-size: 20px;
+    margin-top: -5px;
+  }
+  
+  .sizes {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .size-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .size-btn.active {
+    background-color: blue;
+  }
+  
+  .price-details {
+    display: flex;
+    gap: 15px;
+    font-size: 25px;
+    font-weight: 400;
+    font-family:  "Tenor Sans";;
+    padding: 10px;
+  }
+  .productdecription{
+    font-family:  "Tenor Sans";
+  }
+  .final-price {
+    font-size: 25px;
+  }
+  
+  .quantity {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: lightgray;
+    border: 1px solid gray;
+    border-radius: 5px;
+  }
+  
+  .qty{
+    font-size: 30px;
+    margin-top: 10px;
+  }
+  .btn-minus,
+  .btn-plus {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .buttondiv{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .add-to-cart-btn {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    height: 50px;
+    text-transform: uppercase;
+    font-family: 'Roboto Slab', serif;
+  }
+  .add-to-cart-btn:hover {
+    background-color: rgba(0, 0, 0, 0.493);
+  }
+  .descriptiondiv {
+    margin-top: 40px;
+    line-height: 20px;
+  }
+  
+  .descriptionheading {
+    font-size: 25px;
+    opacity: 0.9;
+    font-weight: 800;
+  }
+  
+  .descriptionpara {
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 0.9;
+    letter-spacing: 1px;
+    text-align: justify;
+  }
+  .size-select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .size-select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+ 
+  @media (max-width: 768px) {
+    .singlrpageimage {
+      height: 200px !important;
+    }
+  
+    .singlrpageimageslide {
+      height: 90px;
+    }
+  }
+  

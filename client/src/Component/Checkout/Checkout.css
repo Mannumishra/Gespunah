@@ -1,0 +1,14 @@
+.checkoutheigth{
+    margin-top: 5px;
+}
+.checkoutpage{
+    display: flex !important;
+}
+.boxcheckout{
+    width: 48%;
+}
+@media screen and (max-width:768px) {
+    .checkoutheigth{
+        margin-top: 10px;
+    }
+}

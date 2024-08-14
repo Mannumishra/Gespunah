@@ -1,0 +1,43 @@
+.profileheight{
+    margin-top: 10px
+}
+.profilepage{
+    display: flex;
+
+}.profilebox{
+    width: 48%;
+}
+.profileimage{
+    height: 300px;
+    width: 50%;
+    margin-left: 100px;
+}
+.ordersection{
+    display: flex;
+}
+.orderinfo{
+    width: 30%;
+}
+@media screen and (max-width: 768px) {
+    .profileheight{
+        margin-top: 100px
+    }
+    .profilebox{
+        width: 100%;
+    }
+    .profileimage{
+        height: 300px;
+        width: 100%;
+        margin-left: 100px;
+    }
+    .profileimage{
+        height: 100px;
+        width: 100px;
+        margin-left: 140px;
+        margin-bottom: 5px;
+        border-radius: 50%;
+    }
+    .orderinfo{
+        width: 100%;
+    }
+}

@@ -1,0 +1,163 @@
+.shopheading {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Roboto Slab', serif;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 0px 10px;
+}
+
+.product-card {
+    width: 23%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-images {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-images img {
+    width: 100%;
+    height: 300px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.product-info {
+    padding: 10px;
+}
+
+.product-name {
+    font-size: 20px;
+    font-weight: 200;
+    margin-bottom: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.product-rating {
+    /* Yellow color for rating */
+    color: #EBBF20;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 4px;
+    /* margin-bottom: 5px; */
+}
+
+.product-price {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.original-price {
+    font-size: 0.9em;
+    color: #888;
+    text-decoration: line-through;
+    margin-right: 5px;
+}
+
+.new-price {
+    font-weight: bold;
+}
+
+.add-to-cart-button {
+    background-color: black;
+    width: 100%;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    font-family: 'Roboto Slab', serif;
+}
+
+.add-to-cart-button:hover {
+    background-color: rgba(0, 0, 0, 0.537);
+}
+
+.viewbutton {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.viewallbutton {
+    background-color: black;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-family: 'Roboto Slab', serif;
+    height: 40px;
+    letter-spacing: 1.5px;
+}
+
+.viewallbutton:hover {
+    background-color: rgba(0, 0, 0, 0.537);
+}
+
+@media(max-width:768px) {
+    .shopheading {
+        font-size: 22px;
+        margin-top: 30px;
+    }
+
+    .viewallbutton {
+        width: 34%;
+    }
+
+    .product-images img {
+        height: 170px;
+    }
+
+    .product-name {
+        font-size: 15px;
+    }
+    product-rating {
+        font-size: 15px;
+    }
+    .product-price {
+        flex-wrap: wrap;
+        gap: 0px;
+    }
+    .add-to-cart-button {
+        padding: 5px 4px;
+        font-size: 14px;
+    }
+}

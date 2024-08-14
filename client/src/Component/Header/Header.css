@@ -1,0 +1,157 @@
+/* Header.css */
+
+/* General Styles */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-custom {
+    height: auto;
+}
+
+.firstnav-custom {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    border-bottom:1px solid black ;
+}
+
+.childfirst-custom,
+.childsecond-custom {
+    display: flex;
+    gap: 10px;
+}
+.childfirst-custom div p{
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Roboto Slab', serif;
+}
+
+.childsecond-custom .social-icon {
+    height: 25px;
+}
+
+.desktop-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 40px;
+}
+
+.logo-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-image-custom {
+    height: 100px;
+}
+
+.nav-links-custom {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+
+.nav-links-custom a {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Roboto Slab', serif;
+}
+
+.nav-links-custom a:hover {
+    text-decoration: underline;
+    text-decoration-color: black;
+    text-decoration-thickness: 2px;
+}
+
+.icon-custom {
+    display: flex;
+    justify-content: flex-end;
+    gap: 25px;
+    width: 100%;
+}
+
+.icon-image-custom {
+    height: 30px;
+}
+
+/* Mobile Styles */
+.mobile-custom {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop-custom {
+        display: none;
+    }
+
+    .mobile-custom {
+        display: block;
+    }
+
+    .navbarmobile-custom {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 5px 10px;
+    }
+
+    .menu-icon-custom {
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+
+    .nav-links-custom {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        gap: 10px;
+        top: 0;
+        right: -100%;
+        height: 100%;
+        width: 250px;
+        background-color: #333;
+        padding: 20px;
+        transition: right 0.3s ease-in-out;
+        z-index: 999;
+    }
+
+    .nav-links-custom a {
+        margin: 10px 0;
+        color: white;
+    }
+
+    .mobile-custom.active .nav-links-custom {
+        right: 0;
+    }
+
+    .firstnav-custom {
+        display: none;
+    }
+
+    .logo-image-custom {
+        height: 50px;
+    }
+
+    .logo-custom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 87px;
+    }
+
+    .icon-custom {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+}

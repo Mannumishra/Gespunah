@@ -1,0 +1,59 @@
+/* General Styles */
+.terms-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+  
+  .terms-title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  .terms-content {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .terms-section {
+    margin-bottom: 20px;
+  }
+  
+  .terms-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #2980b9;
+  }
+  
+  .terms-section p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #4a4a4a;
+  }
+  
+  .terms-section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  .terms-section ul li {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #4a4a4a;
+  }
+  
+  .terms-section a {
+    color: #3498db;
+    text-decoration: none;
+  }
+  
+  .terms-section a:hover {
+    text-decoration: underline;
+  }
+  

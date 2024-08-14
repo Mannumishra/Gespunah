@@ -1,0 +1,18 @@
+.df-bottombar-branding {
+    display: none;
+}
+
+@media(max-width:768px) {
+    .carousel-indicators {
+        top: 130px !important;
+    }
+
+    .carousel-indicators [data-bs-target] {
+        background-color: black !important;
+    }
+
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+        background-color: black;
+    }
+}

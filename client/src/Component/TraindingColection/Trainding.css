@@ -1,0 +1,82 @@
+.traindingcollection {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.traingindheading p {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.traindingbox {
+    display: flex;
+    gap: 20px;
+}
+
+.traindingimage {
+    position: relative;
+    width: 25%;
+    cursor: pointer;
+}
+
+.traindingimage img {
+    width: 100%;
+    height: 350px;
+}
+
+.traingtext {
+    position: absolute;
+    top: 0%;
+    background-color: rgba(0, 0, 0, 0.046);
+    /* opacity: 0.1; */
+    left: 0%;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.traingtext p {
+    color: orange;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+@media(max-width:768px) {
+    .traingindheading p {
+        font-size: 24px;
+    }
+    .traindingbox {
+        width: 100%;
+        display: flex;
+        /* flex-direction: column; */
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .traindingimage {
+        position: relative;
+        width: 45%;
+        cursor: pointer;
+    }
+    .traindingcollection {
+        padding: 0px;
+        margin-top: 20px;
+    }
+    .traindingimage img {
+        width: 100%;
+        height: 200px;
+    }
+    .traingtext p {
+        color: orange;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .traindingcollection {
+        margin-top: 30px;
+    }
+    
+}
