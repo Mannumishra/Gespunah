@@ -14,7 +14,7 @@ const AllBanner = () => {
         try {
             const res = await axios.get("https://api.gespunah.com/api/banare")
             const response = res.data.data
-            const newdata = response.reverse()
+            const newdata = response.reverse();
             setData(newdata);
         } catch (error) {
             console.log(error);
