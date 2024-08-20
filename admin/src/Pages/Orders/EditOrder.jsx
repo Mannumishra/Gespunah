@@ -113,12 +113,12 @@ const EditOrder = () => {
                                 <td>
                                     {data.paymentstatus}
                                     <br />
-                                    {data.paymentstatus !== "Success" && data.paymentstatus !== "Done" (
+                                    {data.paymentstatus !== "Success" && data.paymentstatus !== "Done" ? (
                                         <select onChange={getInputData} value={paymentstatus} name="paymentstatus" className='form-select mt-3'>
                                             <option value="Pending">Pending</option>
                                             <option value="Done">Done</option>
                                         </select>
-                                    )}
+                                    ) : ""}
                                 </td>
                             </tr>
                             <tr>
