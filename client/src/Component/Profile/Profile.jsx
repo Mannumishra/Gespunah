@@ -30,7 +30,7 @@ const Profile = () => {
         const getOrderData = async () => {
             try {
                 let res = await axios.get("https://api.gespunah.com/api/checkout/" + sessionStorage.getItem("userid"));
-                setOrder(res.data.data);
+                setOrder(res.data.data.reverse());
             } catch (error) {
                 console.log(error);
             }

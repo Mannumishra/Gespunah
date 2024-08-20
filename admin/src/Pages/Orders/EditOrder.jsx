@@ -113,7 +113,7 @@ const EditOrder = () => {
                                 <td>
                                     {data.paymentstatus}
                                     <br />
-                                    {data.paymentstatus !== "Done" && (
+                                    {data.paymentstatus !== "Success" && data.paymentstatus !== "Done" (
                                         <select onChange={getInputData} value={paymentstatus} name="paymentstatus" className='form-select mt-3'>
                                             <option value="Pending">Pending</option>
                                             <option value="Done">Done</option>
@@ -131,7 +131,7 @@ const EditOrder = () => {
                             </tr>
                             <tr>
                                 <th>RPPID</th>
-                                <td>{data.rppid}</td>
+                                <td>{data.razorpayOrderId}</td>
                             </tr>
                             <tr>
                                 <td colSpan={2}>

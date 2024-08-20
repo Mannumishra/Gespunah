@@ -50,18 +50,66 @@ export default function Checkout() {
             total: total,
             products: cart
         }
-        const res = await axios.post('https://api.gespunah.com/api/checkout', item);
-        console.log(res)
-        if (res.status === 200) {
-            toast.success("Order Is Placed")
-            // navigate("/thanku")
+        try {
+            if (mode === "COD") {
+                const res = await axios.post('https://api.gespunah.com/api/checkout', item);
+                console.log(res)
+                if (res.status === 201) {
+                    toast.success("Order Is Placed")
+                    // navigate("/thanku")
+                }
+                for (let items of cart) {
+                    let deleteItem = await axios.delete("https://api.gespunah.com/api/cart/" + items._id)
+                    console.log(deleteItem);
+                    setCart([]);
+                }
+            }
+            else {
+                const res = await axios.post('https://api.gespunah.com/api/checkout', item);
+                if (res.data.success) {
+                    for (let items of cart) {
+                        let deleteItem = await axios.delete("https://api.gespunah.com/api/cart/" + items._id)
+                        console.log(deleteItem);
+                        setCart([]);
+                    }
+                    const order = res.data.order;
+                    const options = {
+                        key: "rzp_test_XPcfzOlm39oYi8",
+                        amount: Math.round(total * 100),
+                        currency: "INR",
+                        name: "Gespunah",
+                        description: `Payment For Gespunah Product`,
+                        image: "https://i.pinimg.com/originals/9e/ff/85/9eff85f9a3f9540bff61bbeffa0f6305.jpg",
+                        order_id: order?.id,
+                        callback_url: `https://api.gespunah.com/api/Payment-Verification`,
+                        prefill: {
+                            contact: user.phone
+                        },
+                        notes: {
+                            "address": "Razorpay Corporate Office"
+                        },
+                        theme: {
+                            "color": "#2DBCB6"
+                        }
+                    };
+                    const razorpay = new window.Razorpay(options);
+                    razorpay.on('payment.failed', function (response) {
+                        toast.error('Payment failed. Please try again.');
+                    });
+                    razorpay.open();
+                    razorpay.on('payment.success', async function (response) {
+                        toast.success("Payment successful, Order Is Placed");
+                    });
+                } else {
+                    // console.log(error)
+                    toast.error("Failed to place order. Please try again.");
+                }
+            }
+        } catch (error) {
+            console.log("Error placing order:", error);
+            toast.error("Error placing order. Please try again.");
         }
-        for (let items of cart) {
-            let deleteItem = await axios.delete("https://api.gespunah.com/api/cart/" + items._id)
-            console.log(deleteItem);
-            setCart([]);
-        }
-    };
+    }
 
     useEffect(() => {
         getAPIData();
