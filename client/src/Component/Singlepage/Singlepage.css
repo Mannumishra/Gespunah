@@ -178,9 +178,10 @@
   .btn {
     padding: 5px 10px;
     cursor: pointer;
-    background-color: lightgray;
+    background-color: #000;
     border: 1px solid gray;
     border-radius: 5px;
+    margin-bottom: 10px;
   }
   
   .qty{
@@ -194,6 +195,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f8f9fa;
   }
   .buttondiv{
     display: flex;
