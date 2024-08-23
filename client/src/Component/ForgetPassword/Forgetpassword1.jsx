@@ -22,19 +22,19 @@ const ForgetPassword = () => {
         e.preventDefault();
         try {
             if (step === 1) {
-                let res = await axios.post("http://localhost:8000/api/user/forgetpassword1", { email: data.email });
+                let res = await axios.post("https://api.gespunah.com/api/user/forgetpassword1", { email: data.email });
                 if (res.status === 200) {
                     toast.success("OTP sent to your email address");
                     setStep(2);
                 }
             } else if (step === 2) {
-                let res = await axios.post("http://localhost:8000/api/user/forgetpassword2", { email: data.email, otp: data.otp });
+                let res = await axios.post("https://api.gespunah.com/api/user/forgetpassword2", { email: data.email, otp: data.otp });
                 if (res.status === 200) {
                     toast.success("OTP submitted successfully");
                     setStep(3);
                 }
             } else if (step === 3) {
-                let res = await axios.post("http://localhost:8000/api/user/forgetpassword3", { email: data.email, password: data.password });
+                let res = await axios.post("https://api.gespunah.com/api/user/forgetpassword3", { email: data.email, password: data.password });
                 if (res.status === 200) {
                     toast.success("Password reset successfully");
                     navigate("/login");
