@@ -33,7 +33,7 @@ const Login = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Login failed. Please try again.");
+      toast.error(error.response.data.message);
     }
   };
 
@@ -72,7 +72,7 @@ const Login = () => {
         </form>
         <div className="login-footer">
           <p>Don't have an account? <Link to="/signup">Register</Link></p>
-          <p><Link to="/forgot-password">Forgot your password?</Link></p>
+          <p><Link to="/forgetpassword-1">Forgot your password?</Link></p>
         </div>
       </div>
     </div>

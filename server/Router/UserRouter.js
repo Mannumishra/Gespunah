@@ -1,4 +1,4 @@
-const { createRecord, login, forgetPassword1, forgetPassword2, forgetPassword3, getSingleRecord, updateRecord, getRecord } = require("../Controllar/UserControllar")
+const { createRecord, login, forgetPassword1, forgetPassword2, forgetPassword3, getSingleRecord, updateRecord, getRecord, sendOtp, verifyOtp } = require("../Controllar/UserControllar")
 const multer = require("multer")
 const userRouter = require("express").Router()
 const storage = multer.diskStorage({
@@ -20,5 +20,7 @@ userRouter.post("/user/login", login)
 userRouter.post("/user/forgetpassword1", forgetPassword1)
 userRouter.post("/user/forgetpassword2", forgetPassword2)
 userRouter.post("/user/forgetpassword3", forgetPassword3)
+userRouter.post("/sendotp", sendOtp)
+userRouter.post("/verifyotp", verifyOtp)
 
 module.exports = userRouter

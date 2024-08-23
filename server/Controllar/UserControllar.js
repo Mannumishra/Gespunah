@@ -1,4 +1,5 @@
 const user = require("../Model/UserModel")
+const Otp = require("../Model/OtpModel")
 const passwordValidator = require('password-validator');
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
@@ -30,85 +31,153 @@ schema
     .has().not().spaces()
     .is().not().oneOf(['Passw0rd', 'Password123']);
 
+
+    const sendOtp = async (req, res) => {
+        const { email } = req.body;
+        try {
+            const otp = Math.floor(100000 + Math.random() * 900000).toString();
+            await Otp.create({ email, otp });
+            const htmlTemplate = `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+                    <div style="text-align: center;">
+                        <img src="https://gespunah.com/static/media/logo.f58a69af8ad26e8658ed.jpeg" alt="Gespunah" style="width: 150px; margin-bottom: 20px;" />
+                    </div>
+                    <h2 style="color: #333;">Hello</h2>
+                    <p style="color: #555;">Thank you for signing up with <strong>Gespunah</strong>.</p>
+                    <p style="color: #555;">Please use the following OTP to complete your registration:</p>
+                    <h1 style="background-color: #f4f4f4; padding: 10px; border-radius: 5px; text-align: center; color: #333;">${otp}</h1>
+                    <p style="color: #555;">This OTP is valid for the next 10 minutes. Please do not share this code with anyone.</p>
+                    <p style="color: #555;">If you did not request this OTP, please ignore this email.</p>
+                    <p style="color: #333;">Best regards,<br/>The Gespunah Team</p>
+                    <hr style="border: none; border-top: 1px solid #ddd;" />
+                    <p style="text-align: center; color: #777; font-size: 12px;">&copy; ${new Date().getFullYear()} Gespunah. All rights reserved.</p>
+                </div>
+            `;
+    
+            await transporter.sendMail({
+                from: process.env.EMAIL_SEND,
+                to: email,
+                subject: 'Your OTP Code from Gespunah',
+                html: htmlTemplate
+            });
+    
+            res.status(200).json({ message: 'OTP sent to your email' });
+        } catch (err) {
+            console.error(err);
+            if (err.response && err.response.includes('address not found')) {
+                return res.status(400).json({ message: 'Email address not found' });
+            }
+            res.status(500).json({ message: 'Error sending OTP' });
+        }
+    };
+    
+const verifyOtp = async (req, res) => {
+    const { email, otp } = req.body;
+    try {
+        const otpRecord = await Otp.findOne({ email, otp });
+        if (!otpRecord) {
+            return res.status(400).json({ message: 'Invalid OTP' });
+        }
+        await Otp.deleteMany({ email });
+        res.status(200).json({ message: 'OTP verified' });
+    } catch (err) {
+        console.error('Error verifying OTP:', err);
+        res.status(500).json({ message: 'Error verifying OTP' });
+    }
+};
+
 const createRecord = async (req, res) => {
     try {
-        console.log(req.body)
-        let { name,  email, phone, password } = req.body
-        if (!name ||  !email || !phone || !password) {
+        let { name, email, phone, password } = req.body;
+        if (!name || !email || !phone || !password) {
             return res.status(400).json({
                 success: false,
-                mess: "Please Fill AllRequired Fields"
-            })
+                message: "Please Fill All Required Fields"
+            });
         }
-        if (req.body.password && schema.validate(req.body.password)) {
-            let data = new user({ name,  email, phone, password })
-            bcrypt.hash(data.password, 12, async (error, hash) => {
+        if (schema.validate(password)) {
+            const existingUser = await user.findOne({ $or: [{ email }, { phone }] });
+            if (existingUser) {
+                return res.status(400).json({
+                    success: false,
+                    message: existingUser.email === email 
+                        ? "This email is already registered with us" 
+                        : "This phone is already registered with us"
+                });
+            }
+            let newUser = new user({ name, email, phone, password });
+            bcrypt.hash(newUser.password, 12, async (error, hash) => {
                 if (error) {
                     return res.status(500).json({
                         success: false,
-                        mess: "Internal Server Error"
-                    })
-                }
-                else {
-                    data.password = hash
-                    await data.save()
-                    mailOptions = {
+                        message: "Internal Server Error"
+                    });
+                } else {
+                    newUser.password = hash;
+                    await newUser.save();
+                    const mailOptions = {
                         from: process.env.MAIL_SENDER,
-                        to: data.email,
-                        subject: "Account is Created : Team Gespunah",
-                        text: `
-                                Hello ${data.name}
-                                Your Account is Successfully Created
-                                Now You Can Buy Our Latest Products with Great Deals
-                                Team : Gespunah
-                            `
-                    }
-                    transporter.sendMail(mailOptions, ((error) => {
+                        to: newUser.email,
+                        subject: "Account Created Successfully: Team Gespunah",
+                        html: `
+                            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+                                <div style="text-align: center;">
+                                    <img src="https://gespunah.com/static/media/logo.f58a69af8ad26e8658ed.jpeg" alt="Gespunah" style="width: 150px; margin-bottom: 20px;" />
+                                </div>
+                                <h2 style="color: #333;">Hello ${newUser.name}</h2>
+                                <p style="color: #555;">Your account has been successfully created with <strong>Gespunah</strong>.</p>
+                                <p style="color: #555;">You can now enjoy our latest products and great deals.</p>
+                                <p style="color: #333;">Thank you for choosing Gespunah!</p>
+                                <p style="color: #555;">If you have any questions, feel free to contact us.</p>
+                                <p style="color: #333;">Best regards,<br/>The Gespunah Team</p>
+                                <hr style="border: none; border-top: 1px solid #ddd;" />
+                                <p style="text-align: center; color: #777; font-size: 12px;">&copy; ${new Date().getFullYear()} Gespunah. All rights reserved.</p>
+                            </div>
+                        `
+                    };                    
+                    transporter.sendMail(mailOptions, (error) => {
                         if (error) {
-                            console.log(error)
-                            return res.status(401).json({ success: false, message: "Invalid Email Address" })
+                            console.log(error);
+                            return res.status(401).json({
+                                success: false,
+                                message: "Invalid Email Address"
+                            });
                         }
-                    }))
+                    });
                     res.status(200).json({
                         success: true,
-                        mess: "New User Accound Created Successfully",
-                        data: data
-                    })
+                        message: "New User Account Created Successfully",
+                        data: newUser
+                    });
                 }
-            })
-        }
-        else {
+            });
+        } else {
             return res.status(400).json({
                 success: false,
-                mess: "Password Must be greater then 8 charchars and less then 15 charchatrs and 1uppercase ,1lowelcase,1 digit,and 1symbol,and no space"
-            })
+                message: "Password must be between 8-15 characters, contain 1 uppercase, 1 lowercase, 1 digit, 1 symbol, and no spaces"
+            });
         }
     } catch (error) {
-        // console.log(error);
-        if (error.keyValue.phone) {
+        console.error(error);
+        if (error.code === 11000) {
+            const field = Object.keys(error.keyPattern)[0];
             res.status(400).json({
                 success: false,
-                mess: "This phone is Aready Register With us "
-            })
-        }
-        else if (error.keyValue.email) {
-            res.status(400).json({
-                success: false,
-                mess: "This email is Aready Register With us "
-            })
-        }
-        else {
+                message: `This ${field} is already registered with us`
+            });
+        } else {
             res.status(500).json({
                 success: false,
-                mess: "Internal Server Error"
-            })
+                message: "Internal Server Error"
+            });
         }
     }
-}
-const getRecord = async(req,res) =>{
+};
+
+const getRecord = async (req, res) => {
     try {
         let data = await user.find()
-        if(data){
+        if (data) {
             res.status(200).json({
                 success: true,
                 mess: "UserRecord Found",
@@ -179,7 +248,8 @@ const updateRecord = async (req, res) => {
 const login = async (req, res) => {
     try {
         console.log(req.body)
-        let data = await user.findOne({ email:req.body.email
+        let data = await user.findOne({
+            email: req.body.email
             // $or: [
             //     { username: req.body.username },
             //     { email: req.body.email }
@@ -223,17 +293,29 @@ const forgetPassword1 = async (req, res) => {
             let otp = parseInt(Math.random() * 1000000)
             data.otp = otp
             await data.save()
-            mailOptions = {
+            const mailOptions = {
                 from: process.env.MAIL_SENDER,
                 to: data.email,
-                subject: "OTP for Password Reset : Team Ricco",
-                text: `
-                        Hello ${data.name}
-                        OTP for Password Reset is ${data.otp}
-                        Please Never Share Your OTP With anyone
-                        Team : Ricco
-                    `
-            }
+                subject: "OTP for Password Reset: Team Gespunah",
+                html: `
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #ffffff;">
+                        <div style="text-align: center;">
+                            <img src="https://gespunah.com/static/media/logo.f58a69af8ad26e8658ed.jpeg" alt="Gespunah" style="width: 150px; margin-bottom: 20px;" />
+                        </div>
+                        <h2 style="color: #333; text-align: center;">Hello ${data.name},</h2>
+                        <p style="color: #555;">Your OTP for Password Reset is:</p>
+                        <p style="font-size: 24px; font-weight: bold; color: #333; text-align: center; background-color: #f9f9f9; padding: 10px; border-radius: 4px;">
+                            ${data.otp}
+                        </p>
+                        <p style="color: #555;">Please do not share your OTP with anyone.</p>
+                        <p style="color: #333;">Thank you for being a part of Gespunah!</p>
+                        <p style="color: #555;">If you have any questions or need assistance, feel free to contact us.</p>
+                        <p style="color: #333;">Best regards,<br/>The Gespunah Team</p>
+                        <hr style="border: none; border-top: 1px solid #ddd;" />
+                        <p style="text-align: center; color: #777; font-size: 12px;">&copy; ${new Date().getFullYear()} Gespunah. All rights reserved.</p>
+                    </div>
+                `
+            };            
             transporter.sendMail(mailOptions, ((error) => {
                 if (error) {
                     return res.status(400).json({ success: false, message: "Invalid Email Address" })
@@ -301,5 +383,7 @@ module.exports = {
     forgetPassword2: forgetPassword2,
     forgetPassword3: forgetPassword3,
     updateRecord: updateRecord,
-    getRecord:getRecord
+    getRecord: getRecord,
+    sendOtp:sendOtp,
+    verifyOtp:verifyOtp
 }

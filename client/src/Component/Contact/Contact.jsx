@@ -50,7 +50,7 @@ const Contact = () => {
     <div className="contact-container">
       <div className="contact-header">
         <h1>Contact Us</h1>
-        <p>We'd love to hear from you! Fill out the form below or reach out to us directly at <a href="mailto:info@gespunah.com">info@gespunah.com</a>.</p>
+        <p>We'd love to hear from you! Fill out the form below or reach out to us directly at <a href="mailto:gespunah@gmail.com">gespunah@gmail.com</a>.</p>
       </div>
       <div className="contact-content">
         <form className="contact-form" onSubmit={postData}>
