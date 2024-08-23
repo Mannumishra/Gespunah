@@ -13,7 +13,7 @@ const Forgetpassword1 = () => {
     const postdata = async (e) => {
         e.preventDefault()
         try {
-            let res = await axios.post("http://localhost:8000/api/user/forgetpassword1", { email: email })
+            let res = await axios.post("https://api.gespunah.com/api/user/forgetpassword1", { email: email })
             if (res.status === 200) {
                 toast.success("Otp send your email addredd")
                 navigate("/forgetpassword-2")
