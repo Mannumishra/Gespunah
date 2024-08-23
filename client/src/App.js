@@ -20,8 +20,6 @@ import Checkout from './Component/Checkout/Checkout';
 import UpdateProfile from './Component/Profile/UpdateProfile';
 import Collection from './Component/Collection/Collection';
 import Forgetpassword1 from './Component/ForgetPassword/Forgetpassword1';
-import Forgetpassword2 from './Component/ForgetPassword/Forgetpassword2';
-import Forgetpassword3 from './Component/ForgetPassword/Forgetpassword3';
 import FailPayment from './Component/Payment/FailPayment';
 
 function App() {
@@ -49,8 +47,6 @@ function App() {
           <Route path='/update-profile' element={<UpdateProfile />} />
           <Route path='/collection' element={<Collection />} />
           <Route path='/forgetpassword-1' element={<Forgetpassword1 />} />
-          <Route path='/forgetpassword-2' element={<Forgetpassword2 />} />
-          <Route path='/forgetpassword-3' element={<Forgetpassword3 />} />
         </Routes>
         <Footer />
       </BrowserRouter>

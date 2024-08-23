@@ -282,13 +282,7 @@ const forgetPassword1 = async (req, res) => {
     console.log("i am hit")
     console.log(req.body);
     try {
-        var data = await user.findOne({
-            $or: [
-                { username: req.body.username },
-                { email: req.body.email },
-            ]
-        })
-        console.log(data)
+        var data = await user.findOne({ email: req.body.email })
         if (data) {
             let otp = parseInt(Math.random() * 1000000)
             data.otp = otp
@@ -324,7 +318,7 @@ const forgetPassword1 = async (req, res) => {
             res.status(200).json({ success: true, message: "OTP Sent on Your Registered Email Address" })
         }
         else
-            return res.status(401).json({ success: false, message: "User Not Found" })
+            return res.status(401).json({ success: false, message:"Email not registered"})
     } catch (error) {
         res.status(500).json({ success: false, message: "Internal Server Error" })
     }
