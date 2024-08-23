@@ -22,11 +22,12 @@ import Collection from './Component/Collection/Collection';
 import Forgetpassword1 from './Component/ForgetPassword/Forgetpassword1';
 import Forgetpassword2 from './Component/ForgetPassword/Forgetpassword2';
 import Forgetpassword3 from './Component/ForgetPassword/Forgetpassword3';
+import FailPayment from './Component/Payment/FailPayment';
 
 function App() {
   return (
     <>
-    <Toaster />
+      <Toaster />
       <BrowserRouter>
         <Header />
         <Routes>
@@ -35,7 +36,8 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/login' element={<Login />} />
           <Route path='/*' element={<PageNotFound />} />
-          <Route path='/payment' element={<Payment />} />
+          <Route path='/Payment-Success' element={<Payment />} />
+          <Route path='/Payment-failed' element={<FailPayment />} />
           <Route path='/privacypolicy' element={<Pcrvacy />} />
           <Route path='/shop' element={<Shop />} />
           <Route path='/signup' element={<Signup />} />
@@ -46,9 +48,9 @@ function App() {
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/update-profile' element={<UpdateProfile />} />
           <Route path='/collection' element={<Collection />} />
-          <Route path='/forgetpassword-1' element={<Forgetpassword1/>} />
-          <Route path='/forgetpassword-2' element={<Forgetpassword2/>} />
-          <Route path='/forgetpassword-3' element={<Forgetpassword3/>} />
+          <Route path='/forgetpassword-1' element={<Forgetpassword1 />} />
+          <Route path='/forgetpassword-2' element={<Forgetpassword2 />} />
+          <Route path='/forgetpassword-3' element={<Forgetpassword3 />} />
         </Routes>
         <Footer />
       </BrowserRouter>

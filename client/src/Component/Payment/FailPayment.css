@@ -1,43 +1,43 @@
-/* PageNotFound.css */
+/* FailPayment.css */
 
-.page-not-found-container {
+.fail-payment-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* Full viewport height */
-    background-color: #f0f2f5; /* Light gray background */
+    background-color: #f7f9fc; /* Light background color */
     padding: 20px;
     box-sizing: border-box;
   }
   
-  .page-not-found-content {
+  .fail-payment-content {
     text-align: center;
     background-color: #ffffff; /* White background for content */
-    padding: 40px;
+    padding: 30px;
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    max-width: 600px; /* Limit content width */
+    max-width: 500px; /* Limit content width */
     width: 100%;
   }
   
-  .page-not-found-image {
-    width: 150px; /* Image size */
+  .fail-payment-logo {
+    width: 120px; /* Logo size */
     margin-bottom: 20px;
   }
   
-  .page-not-found-title {
-    color: #e74c3c; /* Red color for error message */
-    font-size: 36px;
+  .fail-payment-title {
+    color: #e74c3c; /* Red color for error */
+    font-size: 24px;
     margin-bottom: 10px;
   }
   
-  .page-not-found-message {
+  .fail-payment-message {
     color: #555;
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 20px;
   }
   
-  .page-not-found-button {
+  .fail-payment-button {
     display: inline-block;
     padding: 12px 20px;
     background-color: #1a1a1a; /* Primary button color */
@@ -48,24 +48,24 @@
     transition: background-color 0.3s ease; /* Smooth color transition */
   }
   
-  .page-not-found-button:hover {
+  .fail-payment-button:hover {
     background-color: #333; /* Darker shade on hover */
   }
   
   @media (max-width: 768px) {
-    .page-not-found-content {
+    .fail-payment-content {
       padding: 20px;
     }
   
-    .page-not-found-title {
-      font-size: 28px;
+    .fail-payment-title {
+      font-size: 20px;
     }
   
-    .page-not-found-message {
-      font-size: 16px;
+    .fail-payment-message {
+      font-size: 14px;
     }
   
-    .page-not-found-button {
+    .fail-payment-button {
       font-size: 14px;
     }
   }

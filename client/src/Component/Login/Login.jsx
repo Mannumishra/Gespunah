@@ -12,6 +12,8 @@ const Login = () => {
     password: ""
   });
 
+  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
+
   const getInputData = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
@@ -66,7 +68,29 @@ const Login = () => {
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" required onChange={getInputData} />
+            <div style={{ position: 'relative' }}>
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                name="password"
+                required
+                onChange={getInputData}
+              />
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: 'absolute',
+                  right: '10px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  cursor: 'pointer',
+                  fontSize: '16px',
+                  color: '#666'
+                }}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </span>
+            </div>
           </div>
           <button type="submit" className="submit-button">Login</button>
         </form>
