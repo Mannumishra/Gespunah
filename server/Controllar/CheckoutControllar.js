@@ -3,8 +3,8 @@ const razorpay = require('razorpay');
 const crypto = require('crypto');
 
 var instance = new razorpay({
-    key_id: process.env.RAZORPAY_API_KEY || "rzp_live_JczeUh0uLGDnV5",
-    key_secret: process.env.RAZORPAY_API_SECRET || "AUYCjH4RG997rZKFC2to8K2g",
+    key_id: process.env.RAZORPAY_API_KEY || "rzp_live_9fHvP9s9RJWzJC",
+    key_secret: process.env.RAZORPAY_API_SECRET || "R3H5oCeVqTaZuaV8a8DCBkg2",
 });
 
 const placeOrder = async (req, res) => {
@@ -73,7 +73,7 @@ const paymentVerification = async (req, res) => {
         }
         const body = razorpay_order_id + "|" + razorpay_payment_id;
         const expectedSignature = crypto
-            .createHmac("sha256", process.env.RAZORPAY_API_SECRET || "AUYCjH4RG997rZKFC2to8K2g")
+            .createHmac("sha256", process.env.RAZORPAY_API_SECRET || "R3H5oCeVqTaZuaV8a8DCBkg2")
             .update(body)
             .digest("hex");
         if (expectedSignature === razorpay_signature) {
