@@ -200,7 +200,7 @@ const EditProduct = () => {
                                     </div>
                                     <div className="col-md-3">
                                         <label htmlFor={`finalprice${index + 1}`} className="form-label">Final Price {index + 1}</label>
-                                        <input type="number" name={`finalprice${index + 1}`} value={size.finalprice} readOnly className="form-control" />
+                                        <input type="number" name={`finalprice${index + 1}`} value={size.finalprice.toFixed(0)} readOnly className="form-control" />
                                     </div>
                                     <div className="col-md-12 mt-2">
                                         <button type="button" onClick={() => removeSize(index)} className="btn btn-danger">Remove Size {index + 1}</button>

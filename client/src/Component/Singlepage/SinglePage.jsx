@@ -183,13 +183,13 @@ const SinglePage = () => {
               </div>
               <div className="price-details">
                 <div>
-                  <del className='text-dark'>Rs.{activeSizePrice}</del>
+                  <del className='text-dark'>Rs.{activeSizePrice.toFixed(0)}</del>
                 </div>
                 <div className='text-danger' style={{ fontSize: 25 }}>
-                  Rs.{activeSizeFinalPrice}
+                  Rs.{activeSizeFinalPrice.toFixed(0)}
                 </div>
                 <div>
-                  | Save Rs.{activeSizeDiscount}
+                  | Save Rs.{activeSizeDiscount.toFixed(0)}
                 </div>
               </div>
               <div>

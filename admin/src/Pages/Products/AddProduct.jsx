@@ -189,7 +189,7 @@ const AddProduct = () => {
                                     </div>
                                     <div className="col-md-3">
                                         <label htmlFor={`finalprice${index + 1}`} className="form-label">Final Price {index + 1}:<sup className='text-danger'>*</sup></label>
-                                        <input type="number" name={`finalprice${index + 1}`} value={size.finalprice} onChange={(e) => handleSizeChange(index, 'finalprice', e.target.value)} className="form-control" readOnly required />
+                                        <input type="number" name={`finalprice${index + 1}`} value={size.finalprice.toFixed(0)} onChange={(e) => handleSizeChange(index, 'finalprice', e.target.value)} className="form-control" readOnly required />
                                     </div>
                                     <div className="col-md-12 text-end w-100">
                                         <button type="button" onClick={() => removeSize(index)} className="btn btn-danger mt-2">Remove Size</button>

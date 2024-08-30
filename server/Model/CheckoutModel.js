@@ -45,7 +45,8 @@ const CheckoutSchema = new  mongoose.Schema({
     products: [
        {
         productid: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"Product",
             required: [true, "Product is is must required"]
         },
         productname: {

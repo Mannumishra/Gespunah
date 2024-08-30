@@ -113,7 +113,7 @@ const AllProduct = () => {
                                                 <span>{items.pair} /</span>
                                                 <span>{items.price} &#8377; /</span>
                                                 <span>{items.discountprice}% /</span>
-                                                <span>{items.finalprice} &#8377; </span>
+                                                <span>{items.finalprice.toFixed(0)} &#8377; </span>
                                             </div>
                                         )
                                     }

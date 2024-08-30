@@ -44,7 +44,7 @@
     padding: 10px;
 }
 
-.product-name {
+/* .product-name {
     font-size: 20px;
     font-weight: 200;
     margin-bottom: 5px;
@@ -52,8 +52,22 @@
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-family: 'Roboto Slab', serif;
+} */
+.product-name {
+    overflow: hidden;
+    font-size: 20px;
+    font-weight: 200;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    color: #f44336;
+    color: var(--color-red);
+    display: -webkit-box;
+    margin-bottom: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: 'Roboto Slab', serif;
 }
-
 .product-rating {
     /* Yellow color for rating */
     color: #EBBF20;

@@ -54,7 +54,7 @@ const SeasonCollection = () => {
                                 </div>
                                 <div className="product-price">
                                     <span className="original-price">&#8377;{product.sizes[0].price}</span>
-                                    <span className="new-price">&#8377;{product.sizes[0].finalprice}</span>
+                                    <span className="new-price">&#8377;{product.sizes[0].finalprice.toFixed(0)}</span>
                                     <span className='text-danger'>Save {product.sizes[0].discountprice}%</span>
                                 </div>
                                 <Link to={`/details/${product._id}`}><button className="add-to-cart-button">View Details</button></Link>
