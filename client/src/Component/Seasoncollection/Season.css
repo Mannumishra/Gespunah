@@ -148,12 +148,14 @@
 
 @media(max-width:768px) {
     .shopheading {
-        font-size: 22px;
+        font-size: 16px;
         margin-top: 30px;
     }
 
     .viewallbutton {
         width: 34%;
+        font-size: 10px;
+        height: 33px;
     }
 
     .product-images img {
@@ -161,7 +163,7 @@
     }
 
     .product-name {
-        font-size: 15px;
+        font-size: 9px;
     }
     product-rating {
         font-size: 15px;
@@ -172,6 +174,7 @@
     }
     .add-to-cart-button {
         padding: 5px 4px;
-        font-size: 14px;
+        font-size: 10px;
     }
+   
 }
