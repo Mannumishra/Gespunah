@@ -65,7 +65,7 @@ export default function Checkout() {
                 }
             }
             else {
-                const res = await axios.post('https://api.gespunah.com/api/checkout', item);
+                const res = await axios.post('https://api.gespunah.com/api/checkout', item)
                 if (res.data.success) {
                     for (let items of cart) {
                         let deleteItem = await axios.delete("https://api.gespunah.com/api/cart/" + items._id)
