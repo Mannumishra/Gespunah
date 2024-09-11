@@ -74,7 +74,7 @@ export default function Checkout() {
                     }
                     const order = res.data.order;
                     const options = {
-                        key: "rzp_test_XPcfzOlm39oYi8",
+                        key: "rzp_live_EiOXHjuoxVVY2U",
                         amount: Math.round(total * 100),
                         currency: "INR",
                         name: "Gespunah",
