@@ -101,7 +101,7 @@ export default function Checkout() {
                         toast.success("Payment successful, Order Is Placed");
                     });
                 } else {
-                    // console.log(error)
+                    console.log(error)
                     toast.error("Failed to place order. Please try again.");
                 }
             }
