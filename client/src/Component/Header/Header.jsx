@@ -20,7 +20,7 @@ const Header = () => {
 
   const getUserDetails = async()=>{
     try {
-      let res = await axios.get("http://localhost:8000/api/user/" +userid);
+      let res = await axios.get("https://api.gespunah.com/api/user/" +userid);
       setUserdata(res.data.data);
       console.log(res)
     } catch (error) {

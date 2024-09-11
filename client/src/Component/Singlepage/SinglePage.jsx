@@ -34,7 +34,7 @@ const SinglePage = () => {
 
   const getsingleProductData = async () => {
     try {
-      let res = await axios.get("http://localhost:8000/api/product/" + _id);
+      let res = await axios.get("https://api.gespunah.com/api/product/" + _id);
       console.log(res);
       setSingleData(res.data.data);
       const { pic1, pic2, pic3, pic4 } = res.data.data;
@@ -87,7 +87,7 @@ const SinglePage = () => {
           pic: singleData.pic1
         };
         if (newItem.quantity > 0 && loginvalue === "true") {
-          let res = await axios.post('http://localhost:8000/api/cart', newItem);
+          let res = await axios.post('https://api.gespunah.com/api/cart', newItem);
           if (res.status === 200) {
             toast.success("Product Added to cart");
             navigate("/cart");

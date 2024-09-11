@@ -28,12 +28,12 @@ const EditOrder = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const orderResponse = await axios.get(`http://localhost:8000/api/checkout/admin/${_id}`);
+                const orderResponse = await axios.get(`https://api.gespunah.com/api/checkout/admin/${_id}`);
                 setData(orderResponse.data.data);
                 setOrderstatus(orderResponse.data.data.orderstatus || "");
                 setPaymentstatus(orderResponse.data.data.paymentstatus || "");
 
-                const userResponse = await axios.get(`http://localhost:8000/api/user/${orderResponse.data.data.userid}`);
+                const userResponse = await axios.get(`https://api.gespunah.com/api/user/${orderResponse.data.data.userid}`);
                 setUser(userResponse.data.data);
                 setOrderData(prev => ({
                     ...prev,
@@ -59,7 +59,7 @@ const EditOrder = () => {
         const payload = { email, password };
 
         try {
-            const response = await axios.post('http://localhost:8000/api/login-via-shiprocket', payload, {
+            const response = await axios.post('https://api.gespunah.com/api/login-via-shiprocket', payload, {
                 headers: { 'Content-Type': 'application/json' }
             });
 
@@ -81,7 +81,7 @@ const EditOrder = () => {
         setStep(1);
 
         try {
-            const response = await axios.post('http://localhost:8000/api/shiped-order-shiprocket', orderData, {
+            const response = await axios.post('https://api.gespunah.com/api/shiped-order-shiprocket', orderData, {
                 headers: { 'Content-Type': 'application/json' }
             });
             console.log(response)

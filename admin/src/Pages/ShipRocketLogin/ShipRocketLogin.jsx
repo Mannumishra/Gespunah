@@ -20,7 +20,7 @@ const ShipRocketLogin = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:8000/api/login-via-shiprocket', payload, {
+            const response = await axios.post('https://api.gespunah.com/api/login-via-shiprocket', payload, {
                 headers: {
                     'Content-Type': 'application/json'
                 }

@@ -18,7 +18,7 @@ const EditBanner = () => {
     const getApiData = async () => {
         setLoading(true);
         try {
-            const res = await axios.get(`http://localhost:8000/api/banare/${_id}`);
+            const res = await axios.get(`https://api.gespunah.com/api/banare/${_id}`);
             setData(res.data.data);
         } catch (error) {
             console.log(error);
@@ -33,7 +33,7 @@ const EditBanner = () => {
         const formData = new FormData();
         formData.append('image', data.image);
         try {
-            const res = await axios.put(`http://localhost:8000/api/banare/${_id}`, formData);
+            const res = await axios.put(`https://api.gespunah.com/api/banare/${_id}`, formData);
             if (res.status === 200) {
                 toast.success('Banare Updated successfully');
                 navigate('/all-banners');

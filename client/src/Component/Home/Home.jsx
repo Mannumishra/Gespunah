@@ -16,7 +16,7 @@ const Home = () => {
   const [data, setData] = useState([])
   const getApiData = async () => {
     try {
-      let res = await axios.get("http://localhost:8000/api/banare")
+      let res = await axios.get("https://api.gespunah.com/api/banare")
       console.log(res)
       setData(res.data.data)
     } catch (error) {

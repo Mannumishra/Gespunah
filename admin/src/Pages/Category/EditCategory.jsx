@@ -29,7 +29,7 @@ const EditCategory = () => {
 
     const getApiData = async () => {
         try {
-            let res = await axios.get("http://localhost:8000/api/category/" + _id)
+            let res = await axios.get("https://api.gespunah.com/api/category/" + _id)
             console.log(res);
             setData(res.data.data)
         } catch (error) {
@@ -40,7 +40,7 @@ const EditCategory = () => {
         e.preventDefault()
         setLoading(true)
         try {
-            let res = await axios.put("http://localhost:8000/api/category/" + _id, newdata)
+            let res = await axios.put("https://api.gespunah.com/api/category/" + _id, newdata)
             if (res.status === 200) {
                 toast.success("Product Category is created")
                 navigate("/all-category")

@@ -22,7 +22,7 @@ const Login = () => {
   const postData = async (e) => {
     e.preventDefault();
     try {
-      let res = await axios.post("http://localhost:8000/api/user/login", data);
+      let res = await axios.post("https://api.gespunah.com/api/user/login", data);
       console.log(res.data.data._id);
       if (res.status === 200) {
         sessionStorage.setItem("login", true);

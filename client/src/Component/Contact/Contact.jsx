@@ -19,7 +19,7 @@ const Contact = () => {
   const postData = async (e) => {
     e.preventDefault();
     try {
-      let res = await axios.post("http://localhost:8000/api/contact", data);
+      let res = await axios.post("https://api.gespunah.com/api/contact", data);
       if (res.status === 200) {
         toast.success("Your query has been sent successfully!");
         setData({
