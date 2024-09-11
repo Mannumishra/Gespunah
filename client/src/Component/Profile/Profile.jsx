@@ -19,7 +19,7 @@ const Profile = () => {
     useEffect(() => {
         const getApiData = async () => {
             try {
-                let res = await axios.get("https://api.gespunah.com/api/user/" + sessionStorage.getItem("userid"));
+                let res = await axios.get("http://localhost:8000/api/user/" + sessionStorage.getItem("userid"));
                 setUser(res.data.data);
                 console.log(res)
             } catch (error) {
@@ -29,7 +29,7 @@ const Profile = () => {
 
         const getOrderData = async () => {
             try {
-                let res = await axios.get("https://api.gespunah.com/api/checkout/" + sessionStorage.getItem("userid"));
+                let res = await axios.get("http://localhost:8000/api/checkout/" + sessionStorage.getItem("userid"));
                 setOrder(res.data.data.reverse());
             } catch (error) {
                 console.log(error);

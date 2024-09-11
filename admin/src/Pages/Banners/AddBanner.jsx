@@ -21,7 +21,7 @@ const AddBanner = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            let res = await axios.post("https://api.gespunah.com/api/banare", formData);
+            let res = await axios.post("http://localhost:8000/api/banare", formData);
             if (res.status === 200) {
                 toast.success("Banare Created Successfully");
                 navigate("/all-banners");

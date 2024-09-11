@@ -40,7 +40,7 @@ const Signup = () => {
     }
     setLoading(true);
     try {
-      let res = await axios.post("https://api.gespunah.com/api/user", data);
+      let res = await axios.post("http://localhost:8000/api/user", data);
       if (res.status === 200) {
         toast.success("Signup successful");
         setLoading(false);
@@ -55,7 +55,7 @@ const Signup = () => {
   const sendotp = async () => {
     setLoading(true);
     try {
-      const res = await axios.post("https://api.gespunah.com/api/sendotp", { email: data.email });
+      const res = await axios.post("http://localhost:8000/api/sendotp", { email: data.email });
       if (res.status === 200) {
         toast.success("OTP sent successfully");
         setOtpSent(true); // Show OTP input box after sending OTP
@@ -71,7 +71,7 @@ const Signup = () => {
   const verifybutton = async () => {
     setLoading(true);
     try {
-      const res = await axios.post("https://api.gespunah.com/api/verifyotp", { email: data.email, otp: data.otp });
+      const res = await axios.post("http://localhost:8000/api/verifyotp", { email: data.email, otp: data.otp });
       if (res.status === 200) {
         toast.success("Email verified successfully");
         setIsVerified(true); // Hide Verify and Resend OTP buttons after verification

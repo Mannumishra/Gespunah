@@ -8,7 +8,7 @@ const Cart = () => {
 
   const getCartdata = async () => {
     try {
-      let res = await axios.get("https://api.gespunah.com/api/cart/" + sessionStorage.getItem("userid"))
+      let res = await axios.get("http://localhost:8000/api/cart/" + sessionStorage.getItem("userid"))
       setData(res.data.data)
       console.log(res)
     } catch (error) {
@@ -28,7 +28,7 @@ const Cart = () => {
       } else {
         return;
       }
-      const res = await axios.put(`https://api.gespunah.com/api/cart/${itemId}`, { quantity: updatedQty });
+      const res = await axios.put(`http://localhost:8000/api/cart/${itemId}`, { quantity: updatedQty });
       console.log(res);
       getCartdata();
     } catch (error) {
@@ -38,7 +38,7 @@ const Cart = () => {
 
   const deleteItem = async (_id) => {
     try {
-      let res = await axios.delete('https://api.gespunah.com/api/cart/' + _id);
+      let res = await axios.delete('http://localhost:8000/api/cart/' + _id);
       console.log(res);
       getCartdata();
     } catch (error) {

@@ -13,7 +13,7 @@ export default function Checkout() {
 
     const getAPIData = async () => {
         try {
-            let res = await axios.get('https://api.gespunah.com/api/user/' + sessionStorage.getItem("userid"));
+            let res = await axios.get('http://localhost:8000/api/user/' + sessionStorage.getItem("userid"));
             setUser(res.data.data);
         } catch (error) {
             console.log(error);
@@ -22,7 +22,7 @@ export default function Checkout() {
 
     const getCartData = async () => {
         try {
-            let res = await axios.get('https://api.gespunah.com/api/cart/' + sessionStorage.getItem("userid"));
+            let res = await axios.get('http://localhost:8000/api/cart/' + sessionStorage.getItem("userid"));
             setCart(res.data.data);
             calculateTotal(res.data.data);
         } catch (error) {
@@ -52,23 +52,23 @@ export default function Checkout() {
         }
         try {
             if (mode === "COD") {
-                const res = await axios.post('https://api.gespunah.com/api/checkout', item);
+                const res = await axios.post('http://localhost:8000/api/checkout', item);
                 console.log(res)
                 if (res.status === 201) {
                     toast.success("Order Is Placed")
                     // navigate("/thanku")
                 }
                 for (let items of cart) {
-                    let deleteItem = await axios.delete("https://api.gespunah.com/api/cart/" + items._id)
+                    let deleteItem = await axios.delete("http://localhost:8000/api/cart/" + items._id)
                     console.log(deleteItem);
                     setCart([]);
                 }
             }
             else {
-                const res = await axios.post('https://api.gespunah.com/api/checkout', item);
+                const res = await axios.post('http://localhost:8000/api/checkout', item);
                 if (res.data.success) {
                     for (let items of cart) {
-                        let deleteItem = await axios.delete("https://api.gespunah.com/api/cart/" + items._id)
+                        let deleteItem = await axios.delete("http://localhost:8000/api/cart/" + items._id)
                         console.log(deleteItem);
                         setCart([]);
                     }
@@ -81,7 +81,7 @@ export default function Checkout() {
                         description: `Payment For Gespunah Product`,
                         image: "https://i.pinimg.com/originals/9e/ff/85/9eff85f9a3f9540bff61bbeffa0f6305.jpg",
                         order_id: order?.id,
-                        callback_url: `https://api.gespunah.com/api/Payment-Verification`,
+                        callback_url: `http://localhost:8000/api/Payment-Verification`,
                         prefill: {
                             contact: user.phone
                         },

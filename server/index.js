@@ -13,6 +13,7 @@ const productRouter = require("./Router/ProductRouter")
 const cartRouter = require("./Router/CartRouter")
 const checkoutrouter = require("./Router/CheckOutRouter")
 const categoryRouter = require("./Router/CategoryRouter")
+const shiprocket = require("./Router/ShipRocket")
 // const cartRouter = require("./Router/CartRouter")
 
 const app = express()
@@ -40,6 +41,8 @@ app.use("/api" , productRouter)
 app.use("/api" ,cartRouter)
 app.use("/api" ,checkoutrouter)
 app.use("/api" ,categoryRouter)
+app.use("/api" ,shiprocket)
+
 
 
 app.listen(process.env.PORT, () => {

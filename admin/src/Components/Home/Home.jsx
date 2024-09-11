@@ -27,6 +27,8 @@ import AllTrainding from '../../Pages/Category copy/AllTrainding'
 import Trainding from '../../Pages/Category copy/Trainding'
 import EditTrainding from '../../Pages/Category copy/EditTrainding'
 import Login from '../auth/Login'
+import ShipRocketLogin from '../../Pages/ShipRocketLogin/ShipRocketLogin'
+import OrderComponent from '../../Pages/Orders/OrderComponent '
 
 const Home = () => {
   const login = sessionStorage.getItem("login")
@@ -82,6 +84,14 @@ const Home = () => {
           {/* --- Orders --- */}
           <Route path={"/all-orders"} element={<AllOrder />} />
           <Route path={"/edit-order/:_id"} element={<EditOrder />} />
+
+
+
+          <Route path={"/ship-rocket-login"} element={<ShipRocketLogin />} />
+
+          <Route path={"/order-ship-rocket"} element={<OrderComponent />} />
+
+
         </Routes>
       </div>
     </>

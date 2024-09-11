@@ -16,7 +16,7 @@ const SeasonCollection = () => {
   
     const getApiProductdata = async () => {
       try {
-        let res = await axios.get("https://api.gespunah.com/api/product")
+        let res = await axios.get("http://localhost:8000/api/product")
         console.log(res)
         setData(res.data.data)
       } catch (error) {

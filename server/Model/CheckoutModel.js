@@ -1,13 +1,13 @@
 const mongoose = require("mongoose")
 
-const CheckoutSchema = new  mongoose.Schema({
+const CheckoutSchema = new mongoose.Schema({
     userid: {
         type: String,
         required: [true, "User Id Must Required"]
     },
     orderstatus: {
         type: String,
-        default:"Order is Placed"
+        default: "Order is Placed"
     },
     razorpayOrderId: {
         type: String
@@ -28,53 +28,57 @@ const CheckoutSchema = new  mongoose.Schema({
     },
     paymentstatus: {
         type: String,
-        default:"Pending"
+        default: "Pending"
     },
     paymentmode: {
         type: String,
-        default:"COD"
+        default: "COD"
     },
     total: {
         type: Number,
-        required:[true,"Total Must Required"]
+        required: [true, "Total Must Required"]
     },
     rppid: {
         type: String,
-        default:""
+        default: ""
+    },
+    sentToShipRocket: {
+        type: Boolean,
+        default: false
     },
     products: [
-       {
-        productid: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref:"Product",
-            required: [true, "Product is is must required"]
-        },
-        productname: {
-            type: String,
-            required: [true, "Product is is must required"]
-        },
-        quantity: {
-            type: Number,
-            required: [true, "Product is is must required"]
-        },
-        pair: {
-            type: String,
-            required: [true, "Product is is must required"]
-        },
-        price: {
-            type: Number,
-            required: [true, "Product is is must required"]
-        },
-        numberoffoot: {
-            type: String,
-            required: [true, "Product is is must required"]
-        },
-        pic: {
-            type: String,
-            required: [true, "Product is is must required"]
+        {
+            productid: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Product",
+                required: [true, "Product is is must required"]
+            },
+            productname: {
+                type: String,
+                required: [true, "Product is is must required"]
+            },
+            quantity: {
+                type: Number,
+                required: [true, "Product is is must required"]
+            },
+            pair: {
+                type: String,
+                required: [true, "Product is is must required"]
+            },
+            price: {
+                type: Number,
+                required: [true, "Product is is must required"]
+            },
+            numberoffoot: {
+                type: String,
+                required: [true, "Product is is must required"]
+            },
+            pic: {
+                type: String,
+                required: [true, "Product is is must required"]
+            }
         }
-       }
     ]
-},{timestamps:true})
-const Checkout =  mongoose.model("Checkout", CheckoutSchema)
+}, { timestamps: true })
+const Checkout = mongoose.model("Checkout", CheckoutSchema)
 module.exports = Checkout

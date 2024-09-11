@@ -12,7 +12,7 @@ const AllBanner = () => {
 
     const getApiData = async () => {
         try {
-            const res = await axios.get("https://api.gespunah.com/api/banare")
+            const res = await axios.get("http://localhost:8000/api/banare")
             const response = res.data.data
             const newdata = response.reverse();
             setData(newdata);
@@ -23,7 +23,7 @@ const AllBanner = () => {
 
     const deleteRecord = async (_id) => {
         try {
-            const res = await axios.delete(`https://api.gespunah.com/api/banare/${_id}`)
+            const res = await axios.delete(`http://localhost:8000/api/banare/${_id}`)
             if (res.status === 200) {
                 toast.success("Banare Deleted Successfully");
             }

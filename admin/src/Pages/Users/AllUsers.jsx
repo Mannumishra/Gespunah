@@ -6,7 +6,7 @@ const AllUsers = () => {
 
     const getApiData = async () => {
         try {
-            const res = await axios.get("https://api.gespunah.com/api/user")
+            const res = await axios.get("http://localhost:8000/api/user")
             if(res.status===200){
                 const newData = res.data.data
                 setData(newData.reverse())

@@ -10,7 +10,7 @@ const AllOrder = () => {
     // const navigate = useNavigate()
     const getApiData = async () => {
         try {
-            let res = await axios.get("https://api.gespunah.com/api/checkout")
+            let res = await axios.get("http://localhost:8000/api/checkout")
             console.log(res)
             setData(res.data.data)
         } catch (error) { }

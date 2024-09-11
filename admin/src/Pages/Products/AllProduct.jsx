@@ -10,7 +10,7 @@ const AllProduct = () => {
 
     const getApiData = async () => {
         try {
-            let res = await axios.get("https://api.gespunah.com/api/product")
+            let res = await axios.get("http://localhost:8000/api/product")
             const newData = res.data.data
             setData(newData.reverse())
         } catch (error) {
@@ -19,7 +19,7 @@ const AllProduct = () => {
     }
     const deleteRecord = async (_id) => {
         try {
-            let res = await axios.delete("https://api.gespunah.com/api/product/" + _id)
+            let res = await axios.delete("http://localhost:8000/api/product/" + _id)
             if (res.status === 200) {
                 toast.success("Product deleted successfully")
                 getApiData()
